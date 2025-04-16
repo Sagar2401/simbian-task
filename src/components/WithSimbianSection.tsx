@@ -134,19 +134,19 @@ const WithSimbianSection = () => {
           <div className="grid grid-cols-1 gap-6">
             <AlertCard
               title="Ignored Alerts"
-              initialCount={0}
+              initialCount={10}
               type="ignored"
               withSimbian={true}
             />
             <AlertCard
               title="Wrongly Closed"
-              initialCount={0}
+              initialCount={8}
               type="wronglyClosed"
               withSimbian={true}
             />
             <AlertCard
               title="Active Threats"
-              initialCount={0}
+              initialCount={2}
               type="activeThreats"
               withSimbian={true}
             />

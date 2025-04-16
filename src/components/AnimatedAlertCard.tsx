@@ -49,6 +49,35 @@ const AnimatedAlertCard = ({
   };
 
   useEffect(() => {
+    if (withSimbian) {
+      const initialAlerts = Array.from({ length: initialCount }).map(() =>
+        generateRandomAlert()
+      );
+      setAlerts(initialAlerts);
+      // Animate count down to zero
+      const interval = setInterval(() => {
+        setCount((prev) => {
+          if (prev <= 0) {
+            clearInterval(interval);
+            setAlerts([]);
+
+            return 0;
+          }
+
+          setAlerts((prevAlerts) => prevAlerts.slice(1));
+
+          return prev - 1; // Reduce count in steps
+        });
+      }, 300);
+
+      return () => clearInterval(interval);
+    } else {
+      setCount(count);
+    }
+  }, [withSimbian, initialCount]);
+
+  console.log("a", alerts);
+  useEffect(() => {
     // Don't increase alerts for "with Simbian" section
     if (withSimbian) return;
 
@@ -90,7 +119,7 @@ const AnimatedAlertCard = ({
         </div>
         <motion.div
           key={count}
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.8, opacity: 1 }}
           animate={{ scale: 1, opacity: 1 }}
           className={cn(
             "text-3xl font-bold",
@@ -117,7 +146,7 @@ const AnimatedAlertCard = ({
           ))}
         </AnimatePresence>
 
-        {withSimbian && (
+        {withSimbian && count === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
