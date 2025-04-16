@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import WithoutSimbianSection from "@/components/WithoutSimbianSection";
 import WithSimbianSection from "@/components/WithSimbianSection";
-import Footer from "@/components/Footer";
 
 export default function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scrollY, setScrollY] = useState(0);
   const [isWithSimbian, setIsWithSimbian] = useState(false);
 

@@ -103,7 +103,7 @@ const AnimatedAlertCard = ({
 
       <div className="mt-4 space-y-2 max-h-[120px] overflow-hidden">
         <AnimatePresence>
-          {alerts.map((alert, index) => (
+          {alerts.map((alert) => (
             <motion.div
               key={alert.id}
               initial={{ opacity: 0, height: 0 }}
